@@ -285,7 +285,7 @@ case "$play":
         if(!message.guild.voiceConnection){
             message.reply('Im Not In A Voice Channel!');
         }else{
-//كود بدء الموسيقى مالك
+$play
         }
             var voiceConnection = client.voiceConnections.first();
 
