@@ -46,9 +46,9 @@ if (message.content === '$help') {
     }
 });
 client.on('message', message => {
-  if(message.content === ('clear')) {
-  let modRole = message.guild.roles.find("name", "Admin");
-  if (!modRole) return message.reply('You do not have Admin Role'); {
+  if(message.content === ('مسح')) {
+  let modRole = message.guild.roles.find("name", "-");
+  if (!modRole) return message.reply('You do not have - Role'); {
     }
   const params = message.content.split(" ").slice(1)
     let messagecount = parseInt(params[0]);
