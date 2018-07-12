@@ -258,7 +258,7 @@ client.user.setPresence({
     name: 'ARK-Server',
      details: `ARK-Server`,
      url: 'https://www.twitch.tv/B1ACK9',
-     state: `__________________________________`,
+     state: `ARK-Server`,
     application_id: '466839312764370950',
      assets: {
          
