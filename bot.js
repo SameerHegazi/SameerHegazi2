@@ -190,18 +190,4 @@ bot link : https://discordapp.com/api/oauth2/authorize?client_id=466839312764370
 message.channel.send('**تم الارسال في الخاص**');
     }
 });
-client.on('voiceStateUpdate', (codes, ReBeL) => {
-if(ReBeL.voiceChannelID !== "466788728954945536") return console.log("أيرور . ");
-ReBeL.guild.createChannel(ReBeL.user.username , 'voice').then((rebeeel) =>{
-    rebeeel.setParent("467086303553519647");
-ReBeL.guild.members.get(ReBeL.id).setVoiceChannel(rebeeel.id).then((codess) =>{
-  console.log("تــــــم .");
-  let scan = setInterval(()=>{
-if(!ReBeL.voiceChannel) {
-  rebeeel.delete();
-}
-  }, 1700);
-});
-});
-});
 client.login(process.env.BOT_TOKEN);
