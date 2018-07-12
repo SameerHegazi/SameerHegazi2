@@ -248,8 +248,6 @@ message.author.send(`**مدة الرابط : يـوم
     })
     }
     });
-const Discord = require('discord.js');
-const client = new Discord.Client();
 client.on("ready", () => {
 console.log('_____');
 console.log('ready');
