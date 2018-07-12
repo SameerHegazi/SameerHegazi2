@@ -59,7 +59,7 @@ client.on('message', message => {
 client.on('message', message => {
     var args = message.content.split(/[ ]+/)
     if(message.content.includes('discord.gg')){
-      if(!message.member.hasPermission('AdminIstrator'))
+      if(!message.member.hasPermission('Administrator'))
         message.delete()
     return message.reply(`** No Invite Links :angry: ! **`)
     }
