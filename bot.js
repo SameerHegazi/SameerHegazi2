@@ -119,7 +119,7 @@ client.on("message", message => {
      if (message.content === "$id") {
      let embed = new Discord.RichEmbed()
   .setThumbnail(message.author.avatarURL)  
-  .setAuthor(message.author.username)
+  .setAuthor(message.author.username
 .setDescription("معلومات عن الحــساب")
                .setFooter(`Name Bot.`, '')
   .setColor("#9B59B6")
