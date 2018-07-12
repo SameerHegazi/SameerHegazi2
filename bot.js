@@ -198,7 +198,7 @@ client.on('ready', () => {
     client.user.setStatus("online")
 });
 
-const prefix = "1"
+const prefix = "$"
 client.on('message', async msg => { 
 	
 	if (msg.author.bot) return undefined;
