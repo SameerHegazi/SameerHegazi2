@@ -30,7 +30,7 @@ if (message.content === '$help') {
                 .addField("**SAY**" ,"**الاستخدام:** ``$say <الرساله>``")
                 .addField("**ID**" ,"**ال��ستخدام:** ``$id``")
                 .addField("**SERVER**" ,"**الاستخدام:** ``$server``")
-                .addField("**INVITE**" ,"**الاستخدام:** ``$invite <لأضافه البوت لأى سيرفر>``")
+                .addField("**bot owner**" ,"**الاستخدام:** ``$bot owner <لأضافه البوت لأى سيرفر>``")
                 .addField("**SUPPORT**" ,"**الاستخدام:** ``$suppport <سيرفر دعم الفنى>``")
                 .addField("**QA**" ,"**الاستخدام:** ``$qa <السؤال>``  ")
                 .addField("**CLEAR**" ,"**الاستخدام:** ``$clear <العدد>``")
@@ -65,8 +65,7 @@ client.on('message', message => {
     }
 });
 client.on('message', msg => {
-  if (msg.content === '$invite') {
-    msg.reply('link');
+  if (msg.content === '$bot owner') {
   }
 });
 client.on('message', msg => {
