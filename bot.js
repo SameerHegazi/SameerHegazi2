@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 client.on('ready', () => {
-  client.user.setGame(`on 15 servers | $help | By DIRA #4272 .`,'https://www.twitch.tv/B1ACK9');
+  client.user.setGame(`on 15 servers | $help | By DONT TOUCH ME#3030 .`,'https://www.twitch.tv/B1ACK9');
   console.log('---------------');
   console.log(' Bot Is Online')
   console.log('---------------')
@@ -169,6 +169,26 @@ client.on("message", (message) => {
         }).catch(() => {
             message.channel.send(":x: هناك خطاء حاول مره أخرى:x: ");
         });
+    }
+});
+  client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "bot owner") {
+
+
+ message.author.sendMessage(`
+ 
+ __~~ARK-Server~~__
+ ╱╭╮╭╮╱╱╱╱╭╮╭━╮╱╱╱╱╱╱╭━━╮╱╱╱
+♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ 
+ __created By__: DONT TOUCH ME#3030
+
+Server Support : https://discord.gg/qN6fC4W
+bot link : https://discordapp.com/api/oauth2/authorize?client_id=466839312764370950&permissions=8&scope=bot
+`);
+
+message.channel.send('**تم الارسال في الخاص**');
+
     }
 });
 client.login(process.env.BOT_TOKEN);
