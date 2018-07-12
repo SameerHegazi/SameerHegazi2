@@ -254,7 +254,7 @@ console.log('ready');
 client.user.setPresence({
   status: 'dnd',
  game: { 
-    type: 3,
+    type: 1,
     name: 'ARK-Server',
      details: `ARK-Server`,
      url: 'https://www.twitch.tv/B1ACK9',
