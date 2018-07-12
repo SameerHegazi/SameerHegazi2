@@ -248,48 +248,4 @@ message.author.send(`**مدة الرابط : يـوم
     })
     }
     });
-client.on('message', message => {
-   if(message.content.startsWith(prefix + "invites")) {
-    message.guild.fetchInvites().then(invs => {
-      let user = message.mentions.users.first() || message.author
-      let personalInvites = invs.filter(i => i.inviter.id === user.id);
-      let inviteCount = personalInvites.reduce((p, v) => v.uses + p, 0);
-               let mmmmEmbed = new Discord.RichEmbed()
-                         .setAuthor(client.user.username)
-                         .setThumbnail(message.author.avatarURL)
- .addField(` لقد قمت بدعوة :`, ` ${inviteCount} `)
-           .setFooter(`- Requested By: ${message.author.tag}`);
-           message.channel.send(mmmmEmbed)
-});
-  }
-});
-client.on('message', function (message) {
-    var messageParts = message.content.split(' ');
-
-    var command = messageParts[0].toLowerCase();
-    var parameters = messageParts.splice(1, messageParts.length);
-
-
-    switch (command) {
-        case "$join":
-        if(message.guild.voiceConnection){
-            message.reply('Im Already In A Voice Connection!');
-        }else if(!message.member.voiceChannel){
-            message.reply('Youre Not In A Voice Channel!');
-        }else{
-    let channel = message.member.voiceChannel;
-    channel.join();
-        }
-            break;
-case "$play":
-        if(!message.guild.voiceConnection){
-            message.reply('Im Not In A Voice Channel!');
-        }else{
-$play
-        }
-            var voiceConnection = client.voiceConnections.first();
-
-            break;
-}
-});
 client.login(process.env.BOT_TOKEN);
