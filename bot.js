@@ -197,8 +197,6 @@ client.on('ready', () => {
     console.log(`[Codes] ${client.users.size}`)
     client.user.setStatus("online")
 });
-
-const prefix = "$"
 client.on('message', async msg => { 
 	
 	if (msg.author.bot) return undefined;
