@@ -104,7 +104,7 @@ client.on('message', message => {
 });
 client.on('message', msg => {
   if (msg.content === '$suppport') {
-    msg.reply('السيرفر للمساعده,https://discord.gg/JC5vCZ7');
+    msg.reply('السيرفر للمساعده,https://discord.gg/qN6fC4W');
   }
 });
 client.on("message", message => {
