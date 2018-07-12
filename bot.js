@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 client.on('ready', () => {
-  client.user.setGame(` | $help | By DRK .`,'youtube.com');
+  client.user.setGame(`on 15 servers | $help | By DIRA #4272 .`,'https://www.twitch.tv/B1ACK9');
   console.log('---------------');
   console.log(' Bot Is Online')
   console.log('---------------')
@@ -46,9 +46,9 @@ if (message.content === '$help') {
     }
 });
 client.on('message', message => {
-  if(message.content === ('مسح')) {
-  let modRole = message.guild.roles.find("name", "-");
-  if (!modRole) return message.reply('You do not have - Role'); {
+  if(message.content === ('clear')) {
+  let modRole = message.guild.roles.find("name", "Admin");
+  if (!modRole) return message.reply('You do not have Admin Role'); {
     }
   const params = message.content.split(" ").slice(1)
     let messagecount = parseInt(params[0]);
@@ -104,7 +104,7 @@ client.on('message', message => {
 });
 client.on('message', msg => {
   if (msg.content === '$suppport') {
-    msg.reply('السيرفر للمساعده,https://discord.gg/qN6fC4W');
+    msg.reply('السيرفر للمساعده,https://discord.gg/ewCq8jt');
   }
 });
 client.on("message", message => {
@@ -119,7 +119,7 @@ client.on("message", message => {
      if (message.content === "$id") {
      let embed = new Discord.RichEmbed()
   .setThumbnail(message.author.avatarURL)  
-  .setAuthor(message.author.username
+  .setAuthor(message.author.username)
 .setDescription("معلومات عن الحــساب")
                .setFooter(`Name Bot.`, '')
   .setColor("#9B59B6")
@@ -171,65 +171,4 @@ client.on("message", (message) => {
         });
     }
 });
-client.on('message', message => {
-    if (message.content.startsWith("رابط")) {
-
-  message.channel.createInvite({
-        thing: true,
-        maxUses: 100,
-        maxAge: 86400
-    }).then(invite =>
-      message.author.sendMessage(invite.url)
-    )
-  message.channel.send("**تم ارسال الرابط برسالة خاصة**")
-
-message.author.send(`**مدة الرابط : يـوم
-عدد استخدامات الرابط : 100**`)
-
-
-    }
-});
- client.on('message', message => {
-	    var prefix = "$";
-              if(!message.channel.guild) return;
-    if(message.content.startsWith(prefix + 'bc')) {
-    if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
-  if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `ADMINISTRATOR`' );
-    let args = message.content.split(" ").join(" ").slice(2 + prefix.length);
-    let copy = "ARK-Server";
-    let request = `Requested By ${message.author.username}`;
-    if (!args) return message.reply('**يجب عليك كتابة كلمة او جملة لإرسال البرودكاست**');message.channel.send(`**هل أنت متأكد من إرسالك البرودكاست؟ \nمحتوى البرودكاست:** \` ${args}\``).then(msg => {
-    msg.react('✅')
-    .then(() => msg.react('❌'))
-    .then(() =>msg.react('✅'))
-    
-    let reaction1Filter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
-    let reaction2Filter = (reaction, user) => reaction.emoji.name === '❌' && user.id === message.author.id;
-    
-    let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 12000 });
-    let reaction2 = msg.createReactionCollector(reaction2Filter, { time: 12000 });
- reaction1.on("collect", r => {
-    message.channel.send(`**☑ | Done ... The Broadcast Message Has Been Sent For __${message.guild.members.size}__ Members**`).then(m => m.delete(5000));
-    message.guild.members.forEach(m => {
-  
-  var bc = new
-       Discord.RichEmbed()
-       .setColor('RANDOM')
-       .setTitle('Broadcast')
-       .addField('سيرفر', message.guild.name)
-       .addField('المرسل', message.author.username)
-       .addField('الرسالة', args)
-       .setThumbnail(message.author.avatarURL)
-       .setFooter(copy, client.user.avatarURL);
-    m.send({ embed: bc })
-    msg.delete();
-    })
-    })
-    reaction2.on("collect", r => {
-    message.channel.send(`**Broadcast Canceled.**`).then(m => m.delete(5000));
-    msg.delete();
-    })
-    })
-    }
-    });
 client.login(process.env.BOT_TOKEN);
