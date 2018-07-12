@@ -257,7 +257,7 @@ client.user.setPresence({
     type: 2,
     name: 'ARK-Server',
      details: `ARK-Server`,
-     url: 'ARK-Server',
+     playing: 'ARK-Server',
      state: `ARK-Server`,
     application_id: '466839312764370950',
      assets: {
