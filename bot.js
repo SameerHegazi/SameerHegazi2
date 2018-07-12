@@ -107,4 +107,4 @@ message.author.send(`**مدة الرابط : يـوم
      
 }); 
 
-  client.login(process.env.NDY2ODM5MzEyNzY0MzcwOTUw.Dih5gQ.aoE1n1P29KcPt9uCk3-Pk3TdzhY);
+  client.login(process.env.BOT-TOKEN);
