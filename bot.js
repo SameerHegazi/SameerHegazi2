@@ -5,7 +5,6 @@ const dateFormat = require('dateformat');
 const fs = require('fs');
 const moment = require('moment');
 // امر الفل level
-const fs = require('fs');
 let points = JSON.parse(fs.readFileSync("./points.json", "utf8"));
 const prefix = "!!!";
 
