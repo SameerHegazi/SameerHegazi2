@@ -1,174 +1,125 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-client.on('ready', () => {
-  client.user.setGame(` | $help | By DRK .`,'youtube.com');
-  console.log('---------------');
-  console.log(' Bot Is Online')
-  console.log('---------------')
-});
-client.on('message', message => {
-     if (message.content === ".servers") {
-     let embed = new Discord.RichEmbed()
-  .setColor("#0000FF")
-  .addField("**Server: **" , client.guilds.size)
-  message.channel.sendEmbed(embed);
-    }
+const { Client, Util } = require('discord.js');
+const dateFormat = require('dateformat');
+const fs = require('fs');
+const moment = require('moment');
+// امر الفل level
+const fs = require('fs');
+let points = JSON.parse(fs.readFileSync("./points.json", "utf8"));
+const prefix = "!!!";
 
-client.on('message', msg => {
-  if (msg.content === 'ping') {
-    msg.reply('Pong!');
+client.on("message", message => {
+  if (!message.content.startsWith(prefix)) return;
+  if (message.author.bot) return;
+
+  if (!points[message.author.id]) points[message.author.id] = {
+    points: 0,
+    level: 0
+  };
+  let userData = points[message.author.id];
+  userData.points++;
+
+  let curLevel = Math.floor(0.1 * Math.sqrt(userData.points));
+  if (curLevel > userData.level) {
+    // Level up!
+    userData.level = curLevel;
+     message.reply(`**لقد وصلت الى المستوى ${curLevel}**`).then(m => m.delete(100000));
   }
-});
-if (message.content === '$help') {
-              var embed  = new Discord.RichEmbed()
-                .addField("**LINKS**" ,":no_entry_sign: تم اضافه منع الروابط :no_entry_sign: ")
-                .addField("broadcast (bc)" ,"**الاستخدام:** ``$broadcast <الرساله> , $bc <الرساله>``")
-                .addField("**BAN**" ,"**الاستخدام:** ``$ban <المستخدم>``")
-                .addField("**KICK**" ,"**الاستخدام:** ``$kick <المستخدم> ``")
-                .addField("**ِAVATAR**" ,"**الاستخدام:** ``$avatar``")
-                .addField("**INFO**", "**الأستخدام :** ``$info``")
-                .addField("**SAY**" ,"**الاستخدام:** ``$say <الرساله>``")
-                .addField("**ID**" ,"**ال��ستخدام:** ``$id``")
-                .addField("**SERVER**" ,"**الاستخدام:** ``$server``")
-                .addField("**INVITE**" ,"**الاستخدام:** ``$invite <لأضافه البوت لأى سيرفر>``")
-                .addField("**SUPPORT**" ,"**الاستخدام:** ``$suppport <سيرفر دعم الفنى>``")
-                .addField("**QA**" ,"**الاستخدام:** ``$qa <السؤال>``  ")
-                .addField("**CLEAR**" ,"**الاستخدام:** ``$clear <العدد>``")
-                .addField("**PING**", "**الأستخدام:** ``$ping``")
-                .addField("**SERVERNAME**", "**الأستخدام:** ``$servername``")
-                .addField("**CUT_TWEET**", "**الاستخدام** ``$ct``")
-                .addField("**TWEET**", "**الاستخدام** ``$tweet <الرساله>``")
-                .addField("**NO INVITE LINKE**","تم اضافة خاصية منع الانفيتات ")
-                .addField("**LOGIN**" , " تم اضافة خاصية التفعيل لطلب تشغيلها في السيرفر كلم المبيرمجين ")
-                .setColor('RANDOM')
-.setColor('RANDOM')
-  message.author.sendEmbed(embed);
-    }
-});
-client.on('message', message => {
-  if(message.content === ('clear')) {
-  let modRole = message.guild.roles.find("name", "Admin");
-  if (!modRole) return message.reply('You do not have Admin Role'); {
-    }
-  const params = message.content.split(" ").slice(1)
-    let messagecount = parseInt(params[0]);
-    message.channel.fetchMessages({limit: messagecount})
-        .then(messages => message.channel.bulkDelete(messages));
+
+  if (message.content.startsWith(prefix + "level")) {
+    
+      message.reply(` ** انت في المستوى ${userData.level}  مع ${userData.points} نقاط . ** `).then(m => m.delete(100000));
+
   }
+  fs.writeFile("./points.json", JSON.stringify(points), (err) => {
+    if (err) console.error(err)
+  });
+
 });
+        client.on('message', function(message) {
+    if (!message.member.hasPermissions(['ADMINISTRATOR'])){
+            let command = message.content.split(" ")[0];
+        if(message.content.includes('discord. gg')){// gg شيل المسافه الي بين النقطق وال
+        if(!message.channel.guild) return;
+        message.delete()
+           if(!message.channel.guild) return message.reply('** This command only for servers**');
+     message.member.addRole(message.guild.roles.find('name', 'Muted'));
+    const embed500 = new Discord.RichEmbed()
+      .setTitle(" - Alert")
+            .addField(`**  You Have Been Muted **` , `**Reason : Sharing Another Discord Link**`)
+            .setColor("c91616")
+            .setThumbnail(`${message.author.avatarURL}`)
+            .setAuthor(message.author.username, message.author.avatarURL)
+        .setFooter(`${message.guild.name} `)
+     message.channel.send(embed500)
+   
+       
+    }
+    }
+})
 client.on('message', message => {
     var args = message.content.split(/[ ]+/)
-    if(message.content.includes('discord.gg')){
-      if(!message.member.hasPermission('ADMINISTRATOR'))
+    if(message.content.includes('السب')){
         message.delete()
-    return message.reply(`** No Invite Links :angry: ! **`)
+    return message.reply(`**ممنوع السب -_- **`)
+   message.delete()
     }
 });
-client.on('message', msg => {
-  if (msg.content === '$invite') {
-    msg.reply('link');
-  }
+client.on('message', message => {
+    if (message.content.startsWith("رابط")) {
+
+  message.channel.createInvite({
+        thing: true,
+        maxUses: 100,
+        maxAge: 86400
+    }).then(invite =>
+      message.author.sendMessage(invite.url)
+    )
+  message.channel.send("**تم ارسال الرابط برسالة خاصة**")
+
+message.author.send(`**مدة الرابط : يـوم
+عدد استخدامات الرابط : 100**`)
+
+
+    }
 });
-client.on('message', msg => {
-  if (msg.content === '$help') {
-    msg.reply(':envelope: | تم ارسال الرساله في الخاص');
-  }
-});
-client.on("message", message => {
-    var prefix = "$";
+  client.on("message", message => {
+    var prefix = "!!!";
  
             var args = message.content.substring(prefix.length).split(" ");
             if (message.content.startsWith(prefix + "clear")) {
-   if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('⚠ | **ليس لديك صلاحيات**');
+   if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('? | **لا يوجد لديك صلاحية لمسح الشات**');
         var msg;
         msg = parseInt();
       
       message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
       message.channel.sendMessage("", {embed: {
-        title: "Done | تــم",
+        title: "Done | تــم مسح الشات",
         color: 0x06DF00,
-        description: "تم مسح الرسائل بنجاح",
+        description: "تم مسح الرسائل ",
         footer: {
-          text: "Name Bot."
+          text: "©Ghost"
         }
       }}).then(msg => {msg.delete(3000)});
                           }
 
      
-});
-// Your Avatar URL!
+}); 
 client.on('message', message => {
-    if (message.content === "$Avatar") {
-    message.reply(message.author.avatarURL); 
+    if (message.content.startsWith("-avatar")) {
+if(!message.channel.guild) return;
+        var mentionned = message.mentions.users.first();
+    var client;
+      if(mentionned){
+          var client = mentionned; } else {
+          var client = message.author;
+      }
+        const embed = new Discord.RichEmbed()
+                           .addField('Requested by:', "<@" + message.author.id + ">")
+        .setColor(000000)
+        .setImage(`${client.avatarURL}`)
+      message.channel.sendEmbed(embed);
     }
 });
-client.on('message', msg => {
-  if (msg.content === '$suppport') {
-    msg.reply('السيرفر للمساعده,https://discord.gg/JC5vCZ7');
-  }
-});
-client.on("message", message => {
-      if (message.content === "$ping") {
-      const embed = new Discord.RichEmbed()
-  .setColor("RANDOM")
-  .addField('**Ping:**' , `${Date.now() - message.createdTimestamp}` + ' ms')
-  message.channel.sendEmbed(embed);
-    }
-});
-    client.on('message', message => {
-     if (message.content === "$id") {
-     let embed = new Discord.RichEmbed()
-  .setThumbnail(message.author.avatarURL)  
-  .setAuthor(message.author.username)
-.setDescription("معلومات عن الحــساب")
-               .setFooter(`Name Bot.`, '')
-  .setColor("#9B59B6")
-  .addField("اســـم الحســاب", `${message.author.username}`)
-  .addField('كود الحساب الخاص', message.author.discriminator)
-  .addField("الرقـــم الشـــخصي", message.author.id)
-  .addField('بــــوت', message.author.bot)
-  .addField("تاريخ التسجيل", message.author.createdAt)
-     
-     
-  message.channel.sendEmbed(embed);
-    }
-});
-var prefix = "$";
-client.on('message', message => {
-  if (message.author.bot) return;
-  if (!message.content.startsWith(prefix)) return;
-
-  let command = message.content.split(" ")[0];
-  command = command.slice(prefix.length);
-
-  let args = message.content.split(" ").slice(1);
-
-  if (command == "say") {
-   message.channel.sendMessage(args.join("  "))
-  }
-});
-client.on("guildMemberRemove", member => {
-  let guild = member.guild;
-  guild.defaultChannel.sendMessage("", {embed: {
-  color: 808080,
-  author: {
-    name: member.user.username,
-    icon_url: member.user.avatarURL
-  },
-  title: guild.name,
-  description: ' Bye ..',
-}}).catch(console.error);
-  }
-);
-client.on("message", (message) => {
-    if (message.content.startsWith("*ban ")) {
-      if(!message.member.hasPermission('BAN_MEMBERS')) return message.reply('⚠ ماعندك الصلاحيات');
-        var member= message.mentions.members.first();
-        member.ban().then((member) => {
-            message.channel.send(member.displayName + " لقد تم طرده بنجاح :wave: ");
-        }).catch(() => {
-            message.channel.send(":x: هناك خطاء حاول مره أخرى:x: ");
-        });
-    }
-});
-client.login(process.env.BOT_TOKEN);
+  client.login(process.env.BOT-TOKEN);
