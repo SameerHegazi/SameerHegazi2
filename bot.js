@@ -30,7 +30,7 @@ if (message.content === '$help') {
                 .addField("**SAY**" ,"**الاستخدام:** ``$say <الرساله>``")
                 .addField("**ID**" ,"**ال��ستخدام:** ``$id``")
                 .addField("**SERVER**" ,"**الاستخدام:** ``$server``")
-                .addField("**bot owner**" ,"**الاستخدام:** ``$bot owner <لأضافه البوت لأى سيرفر>``")
+                .addField("**INVITE**" ,"**الاستخدام:** ``$bot owner <لأضافه البوت لأى سيرفر>``")
                 .addField("**SUPPORT**" ,"**الاستخدام:** ``$suppport <سيرفر دعم الفنى>``")
                 .addField("**QA**" ,"**الاستخدام:** ``$qa <السؤال>``  ")
                 .addField("**CLEAR**" ,"**الاستخدام:** ``$clear <العدد>``")
@@ -66,6 +66,7 @@ client.on('message', message => {
 });
 client.on('message', msg => {
   if (msg.content === '$bot owner') {
+    msg.reply(':envelope: | تم ارسال الرساله في الخاص');
   }
 });
 client.on('message', msg => {
