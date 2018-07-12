@@ -248,28 +248,4 @@ message.author.send(`**مدة الرابط : يـوم
     })
     }
     });
-client.on("ready", () => {
-console.log('_____');
-console.log('ready');
-client.user.setPresence({
-  status: 'dnd',
- game: { 
-    type: 2,
-    name: 'ARK-Server',
-     details: `ARK-Server`,
-     playing: 'ARK-Server',
-     state: `ARK-Server`,
-    application_id: '466839312764370950',
-     assets: {
-         
-         large_image: `457571196662317057`,
-         large_text: `deadpool` ,//ARK-Server
-        small_image: `457571631804710928`,
-        small_text: '2'//ARK-Server
-       
-    }
-
-  }
-    });
-});
 client.login(process.env.BOT_TOKEN);
