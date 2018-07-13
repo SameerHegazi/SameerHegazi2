@@ -567,4 +567,4 @@ client.on('message', message => {
   message.channel.send(embed);
 }
 });
-client.login(process.env.BOT_TOKEN);
+client.login('NDY2ODM5MzEyNzY0MzcwOTUw.DiiCOw.cbnUPQcfWBQdYKVi0xF6WwltPLo');
