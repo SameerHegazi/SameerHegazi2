@@ -295,11 +295,11 @@ ${prefix}queue ⇏ لمعرفة قآئمة التشغيل
     let request = `Requested By ${message.author.username}`;
     if (!args) return message.reply('**يجب عليك كتابة كلمة او جملة لإرسال البرودكاست**');message.channel.send(`**هل أنت متأكد من إرسالك البرودكاست؟ \nمحتوى البرودكاست:** \` ${args}\``).then(msg => {
     msg.react('✅')
-    .then(() => msg.react('✅'))
+    .then(() => msg.react('❌'))
     .then(() =>msg.react('✅'))
 
     let reaction1Filter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
-    let reaction2Filter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
+    let reaction2Filter = (reaction, user) => reaction.emoji.name === '❌' && user.id === message.author.id;
        let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 12000 });
     let reaction2 = msg.createReactionCollector(reaction2Filter, { time: 12000 });
     reaction1.on("collect", r => {
