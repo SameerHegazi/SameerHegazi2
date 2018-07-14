@@ -263,7 +263,7 @@ ${prefix}queue ⇏ لمعرفة قآئمة التشغيل
    }
    }); 
  client.on("message", message => {
-    var prefix = "$"; // غير هنا حط البرفكس
+    var prefix = "$";
  
             var args = message.content.substring(prefix.length).split(" ");
             if (message.content.startsWith(prefix + "clear")) {
@@ -277,11 +277,12 @@ ${prefix}queue ⇏ لمعرفة قآئمة التشغيل
         color: 0x06DF00,
         description: "تم مسح الرسائل بنجاح",
         footer: {
-          text: "ARK-Server" // غير هنا حط اسم البوت
+          text: "ARK"
         }
       }}).then(msg => {msg.delete(3000)});
                           }
 
      
 });
+
 client.login(process.env.BOT_TOKEN);
