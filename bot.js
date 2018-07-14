@@ -312,7 +312,7 @@ ${prefix}queue ⇏ لمعرفة قآئمة التشغيل
        .addField('Server', message.guild.name)
        .addField('Sender', message.author.username)
        .addField('Message', args)
-       .setImage("https://a.top4top.net/p_9244kg031.jpg")
+       .setImage("https://a.top4top.net/p_924j2ud41.jpg")
        .setThumbnail(message.author.avatarURL)
        .setFooter(copy, client.user.avatarURL);
     m.send({ embed: bc })
