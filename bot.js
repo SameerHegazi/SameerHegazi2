@@ -328,7 +328,7 @@ ${prefix}queue ⇏ لمعرفة قآئمة التشغيل
     });
  client.on('message', message => {
         var  user = message.mentions.users.first() || message.author;
-    if (message.content.startsWith("$avatar")) {
+    if (message.content.startsWith("$avataR")) {
 message.channel.send(`This avatar For ${user} link : ${user.avatarURL}`);
 }
 });
