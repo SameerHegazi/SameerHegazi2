@@ -332,26 +332,5 @@ ${prefix}queue ⇏ لمعرفة قآئمة التشغيل
 message.channel.send(`هذا الافاتار المخصص : ${user.avatarURL}`);
 }
 });
-client.on("message", message => {
-    if(message.content === PREFIX + "help") {
-        var embed = new Discord.RichEmbed()
-         .setTitle("Help >")
-         .setDescription(`
-
-
-₪ $play  ✰ لبدء الاغنية ₪
-₪ $stop ✰ لايقاف الاغنية ₪
-₪ $skip  ✰ الذهاب للاغنية الاخرى ₪
-₪ $np  ✰ لمعرفة اسم الاغنية ₪
-₪ $queu  ✰ لمعرفة ماهي الاغنية التي تعمل الان₪
-₪ $pause  ✰ لايقاف الاغنية مؤقت ₪
-₪ $resume  ✰ لبدء الاغنية من الايقاف المؤقت ₪
-
-
-
-`)
-     message.author.sendEmbed(embed);
-    } 
- });
 
 client.login(process.env.BOT_TOKEN);
