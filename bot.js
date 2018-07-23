@@ -340,14 +340,34 @@ client.on('ready', () => {
     client.user.setStatus("idle")
 });
 client.on('message', message => {
-if(message.content.startsWith(prefix + 'v2min')) {
-    let args = message.content.split(" ").slice(1);
-      var nam = args.join(' ');
-     if(!message.member.hasPermission('MANAGE_CHANNELS')) return    message.channel.send('**⚠ | `[MANAGE CHANNELS]` لا يوجد لديك صلاحية**').then(msg => msg.delete(6000))
-     if (!nam) return message.reply(`** ${prefix}v2min <أسم الروم>**`).then(msg => msg.delete(10000))
-     message.guild.createChannel(nam, 'voice').then(c => setTimeout(() => c.delete(), 120000)) // كل 60 تساوي دقيقة عدل عليها الوق�� لي تبيه 
-     message.channel.send(`☑ TemporarySound : \`${nam}\``).then(c => setTimeout(() => c.edit(`<@${message.author.id}> ⏱  انتهى وقت الروم الصوتي`), 120000))  // 120000 دقيقتان
-   
-    }
+  if(!message.guild) return;
+    if ( message.content == prefix+'v2min'){
+     let args = message.content.split(" ").slice(1);
+    if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
+message.channel.send('هل انت متأكد').then(msg => {
+    msg.react('✅')
+    .then(() => msg.react('❌'))
+
+
+    let YesFilter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
+    let NoFilter = (reaction, user) => reaction.emoji.name === '❌' && user.id === message.author.id;
+
+    let Yes = msg.createReactionCollector(YesFilter, { time: 15000 });
+    let No = msg.createReactionCollector(NoFilter, { time: 15000 });
+
+    No.on("collect", r => {
+message.guild.createChannel(args, 'voice').then(c => setTimeout(() => c.delete(), 120000))
+      message.channel.send(`☑ تم انشاء الروم بنجاح : \`${args}\``).then(c => setTimeout(() => c.edit(`<@${message.author.id}> ⏱  انتهى وقت الروم الصوتي`), 120000))
+        msg.delete();
+        })
+        
+
+                            No.on("collect", r => {
+                                msg.delete();
+                                message.channel.send(`تم الالغاء`).then(m => m.delete(1000));
+                                })
+                                })
+                                }
+
 });
 client.login(process.env.BOT_TOKEN);
