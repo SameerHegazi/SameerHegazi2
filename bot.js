@@ -339,4 +339,15 @@ client.on('ready', () => {
     console.log(`[Codes] ${client.users.size}`)
     client.user.setStatus("idle")
 });
+client.on('message', message => {
+if(message.content.startsWith(prefix + 'v2min')) {
+    let args = message.content.split(" ").slice(1);
+      var nam = args.join(' ');
+     if(!message.member.hasPermission('MANAGE_CHANNELS')) return    message.channel.send('**⚠ | `[MANAGE CHANNELS]` لا يوجد لديك صلاحية**').then(msg => msg.delete(6000))
+     if (!nam) return message.reply(`** ${prefix}v2min <أسم الروم>**`).then(msg => msg.delete(10000))
+     message.guild.createChannel(nam, 'voice').then(c => setTimeout(() => c.delete(), 120000)) // كل 60 تساوي دقيقة عدل عليها الوق�� لي تبيه 
+     message.channel.send(`☑ TemporarySound : \`${nam}\``).then(c => setTimeout(() => c.edit(`<@${message.author.id}> ⏱  انتهى وقت الروم الصوتي`), 120000))  // 120000 دقيقتان
+   
+    }
+});
 client.login(process.env.BOT_TOKEN);
