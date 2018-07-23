@@ -339,8 +339,7 @@ client.on('ready', () => {
     console.log(`[Codes] ${client.users.size}`)
     client.user.setStatus("idle")
 });
-lient.on('message', message => {
-  if(!message.guild) return;
+if(!message.guild) return;
         if ( message.content == prefix+'مؤقت'){
      let args = message.content.split(" ").slice(1);
     if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
