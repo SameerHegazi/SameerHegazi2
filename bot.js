@@ -2418,8 +2418,6 @@ if (message.content.startsWith("-cv")) {
     
 }
 });
-
-
 client.on("message", (message) => {
     if (message.content.startsWith('-delet')) {
         if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply("You Don't Have `MANAGE_CHANNELS` Premissions ");
@@ -2431,28 +2429,19 @@ client.on("message", (message) => {
     }
 });  
 client.on('message', message => {
+    if (!message.guild) return; 
     if (message.content.startsWith("رابط")) {
 
-  message.channel.createInvite({
+        message.channel.createInvite({
         thing: true,
-        maxUses: 100,
+        maxUses: 1,
         maxAge: 86400
     }).then(invite =>
       message.author.sendMessage(invite.url)
     )
-    const embed = new Discord.RichEmbed()
-        .setColor("RANDOM")
-        .setDescription(" ✅    تم ارسال الرابط على الخاص  ")
-      message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
-              const Embed11 = new Discord.RichEmbed()
-        .setColor("RANDOM")
-                .setAuthor(message.guild.name, message.guild.iconURL)
-        .setDescription(`
-**
+  message.channel.send(`** تم أرسال الرابط برسالة خاصة **`)
 
--${message.guild.name}  Link
-**`)
-      message.author.sendEmbed(Embed11)
+      message.author.send(`**هذا الرابط لشخص واحد و لمدة 24 ساعة **`)
     }
 });
 
