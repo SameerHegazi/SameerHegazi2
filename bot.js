@@ -2457,7 +2457,7 @@ if(!isNaN(args) && args.length > 0)
 const embed = new Discord.RichEmbed()
               
 .setFooter('Requested by '+message.author.username, message.author.avatarURL)
-.setDescription(`**Color Changed Successfully** ✅ `)
+.setDescription(`**Color Changed Done** ✅ `)
 
 .setColor(`${a.hexColor}`)
 message.channel.sendEmbed(embed);
