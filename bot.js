@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const prefix = *
 client.on('ready', () => {
   client.user.setGame('*help | *invite','https://www.twitch.tv/B1ACK9');
   console.log('---------------');
