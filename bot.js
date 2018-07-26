@@ -227,7 +227,7 @@ if (message.content.startsWith(prefix + 'help')) {
 ╚[❖══════════════════════❖]╝
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 ╔[❖══════════════════════❖]╗
-| لحظر شخـص مع ارسال السبب |
+| لاعطاء باند  |
 | ----    -_طرد   ---- |
 ╚[❖══════════════════════❖]╝
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -246,6 +246,14 @@ if (message.content.startsWith(prefix + 'help')) {
 ╔[❖══════════════════════❖]╗
 | لفتح الروم |
 | ---    -_openroms   ---- |
+╚[❖══════════════════════❖]╝
+╔[❖══════════════════════❖]╗
+| لاعطاء ميوت |
+| ---    -_اسكت   ---- |
+╚[❖══════════════════════❖]╝
+╔[❖══════════════════════❖]╗
+| لفك الميوت |
+| ---    -_تكلم   ---- |
 ╚[❖══════════════════════❖]╝
 **
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -735,5 +743,31 @@ client.on('message', message => {
       message.author.sendEmbed(Embed11)
     }
 });
+client.on('message', message => {
+        let reason = message.content.split(" ").slice(2).join(" ")
+        let muterole = message.guild.roles.find("name", "muted")
+        let men = message.mentions.users.first()
 
+        if(message.content.startsWith(prefix + "اسكت")) {
+            if(!men) return message.channel.send("**Do you want me to mute you 🤔 ?, please @mention someone. `Ex. #mute @xRokz bad boy`**");
+            if(!reason) return message.channel.send("**Do you want me to mute " + men.username + " with no reason ?, `Ex. #mute @xRokz bad boy` or just use `none` for no reason **`")
+            if(!muterole) {
+                message.guild.createRole({name: "muted", color:"#505f74", permissions: [1115136]})
+
+            }
+            message.guild.member(men).addRole(muterole)
+                message.channel.send("**" + men.username + " has been muted! :zipper_mouth:**")
+        }
+
+        if(message.content.startsWith(prefix + "تكلم")) {
+            if(!men) return message.channel.send("**please @mention someone. `Ex. #unmute <@!298732816995319809> bad boy`**");
+
+            if(!muterole) {
+                message.guild.createRole({name: "muted", color:"#505f74", permissions: [1115136]})
+
+            }
+            message.guild.member(men).removeRole(muterole)
+                message.channel.send("**" + men.username + " has been unmuted! 😀 **")
+        }
+    })
 client.login(process.env.BOT_TOKEN);
