@@ -757,7 +757,7 @@ client.on('message', message => {
 });
 client.on('message', message => {
         let reason = message.content.split(" ").slice(2).join(" ")
-        let muterole = message.guild.roles.find("name", "اسكات")
+        let muterole = message.guild.roles.find("name", "mute")
         let men = message.mentions.users.first()
 
         if(message.content.startsWith(prefix + "اسكت")) {
