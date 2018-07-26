@@ -654,7 +654,7 @@ if (message.content === '-_invite') {
    }
   });
 client.on('message', function(message) {
-	const myID = "471040419334193166";
+	const myID = "465433952535052288";
     let args = message.content.split(" ").slice(1).join(" ");
     if(message.content.startsWith(prefix + "setname")) {
 		        if(message.author.id !== myID) return;
