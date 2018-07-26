@@ -182,12 +182,12 @@ if (message.content.startsWith(prefix + 'help')) {
 ╚[❖══════════════════════❖]╝
 ╔[❖══════════════════════❖]╗
 | لمعرفة  حميع الرتب في السيرفر |
-| ----    !.roles   ---- |
+| ----    -_roles   ---- |
 ╚[❖══════════════════════❖]╝
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 ╔[❖══════════════════════❖]╗
-| لمعرفة معلوماتك بالسيـرفر |
-| ---    !.info    ---- |
+| معلومات عن الروم |
+| ---    -_channel    ---- |
 ╚[❖══════════════════════❖]╝
 ╔[❖══════════════════════❖]╗
 | لمعرفة معلوماتك بالسيـرفر |
@@ -443,6 +443,49 @@ client.on('message', message => {
 .addField(`**عدد الرتب**:briefcase:`,`${message.guild.roles.size}`)
         message.channel.send({embed:embed})
     }
+});
+  var AsciiTable = require('ascii-data-table').default
+client.on('message', message =>{
+
+    if(message.content == "-_roles"){
+        var 
+        ros=message.guild.roles.size,
+        data = [['Rank', 'RoleName']]
+        for(let i =0;i<ros;i++){
+            if(message.guild.roles.array()[i].id !== message.guild.id){
+         data.push([i,`${message.guild.roles.filter(r => r.position == ros-i).map(r=>r.name)}`])
+        }}
+        let res = AsciiTable.table(data)
+
+        message.channel.send(`**\`\`\`xl\n${res}\`\`\`**`);
+    }
+});
+client.on('message', message => {
+var prefix = "-_"
+if(message.startsWith(prefix + "channel")){
+  if(message.channel.permissionsFor(message.client.user).has('EMBED_LINKS') == false) return message.reply('sorry but I cannot send Embed Links for this channel... check my permissions and try again!');
+  var kakchannel = args.slice(1).join(' ');
+  if(!kakchannel) return message.reply('please, specify a channel to get info...');
+
+  var achannel = message.guild.channels.find('name', kakchannel);
+  if(!achannel) return message.reply("i didn't find no channel with tha name! Try again later 👎");
+
+  var channelCreated = achannel.createdAt.toString().split(' ');
+  const embed = new Discord.RichEmbed()
+  .setColor(0xFF8DFD)
+  .setImage()
+  .setThumbnail('http://cdn.onlinewebfonts.com/svg/img_323299.png')
+  .setURL('')
+  .addField(`Channel Name`, `${achannel.name}`, true)
+  .addField(`Channel ID`, `${achannel.id}`, true)
+  .addField(`Channel Position`, `${achannel.position}`, true)
+  .addField(`Channel Members`, `${achannel.members.size} have acess`, true)
+  .addField(`Channel Type`, `${achannel.type}`, true)
+  .addField(`Channel Topic`, `${achannel.topic}`, true)
+  .addField(`Channel Created At`, `${channelCreated[1]} ${channelCreated[2]} ${channelCreated[3]}`)
+
+  message.channel.send({embed})
+}
 });
 
 client.login(process.env.BOT_TOKEN);
