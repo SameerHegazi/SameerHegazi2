@@ -648,7 +648,7 @@ message.channel.send(embed);
 client.on('message', message => {
   if (true) {
 if (message.content === '-_invite') {
-      message.author.send('**تفضل اخي الرابط , يشرفنا دعوتك للبوت واستعماله**').catch(e => console.log(e.stack));
+      message.author.send('** : https://discordapp.com/api/oauth2/authorize?client_id=471040419334193166&permissions=8&scope=botتفضل اخي الرابط , يشرفنا دعوتك للبوت واستعماله**').catch(e => console.log(e.stack));
 	  message.author.send('').catch(e => console.log(e.stack));
     }
    }
