@@ -2431,7 +2431,7 @@ client.on("message", (message) => {
     }
 });  
 client.on('message', function(message) {
-	const myID = "الاي دي حقك";
+	const myID = "465433952535052288";
     let args = message.content.split(" ").slice(1).join(" ");
     if(message.content.startsWith(prefix + "setname")) {
 		        if(message.author.id !== myID) return;
