@@ -200,6 +200,10 @@ if (message.content.startsWith(prefix + 'help')) {
 | ارسال اقتراح لصاحب البوت |
 | ---    -_contact   ---- |
 ╚[❖══════════════════════❖]╝
+╔[❖══════════════════════❖]╗
+| لصنع رابط دعوة |
+| ---    رابط   ---- |
+╚[❖══════════════════════❖]╝
 **_الأوامر العامة_
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
@@ -315,7 +319,7 @@ client.on("message", message => {
         color: 0x06DF00,
         description: "تم مسح الرسائل بنجاح",
         footer: {
-          text: "Alloo" // غير هنا حط اسم البوت
+          text: "Lockat-Bot" // غير هنا حط اسم البوت
         }
       }}).then(msg => {msg.delete(3000)});
                           }
@@ -704,6 +708,31 @@ client.on('message', function(message) {
            msg.delete(5000);
           message.delete(5000);
         });
+    }
+});
+client.on('message', message => {
+    if (message.content.startsWith("رابط")) {
+
+  message.channel.createInvite({
+        thing: true,
+        maxUses: 100,
+        maxAge: 86400
+    }).then(invite =>
+      message.author.sendMessage(invite.url)
+    )
+    const embed = new Discord.RichEmbed()
+        .setColor("RANDOM")
+        .setDescription(" ✅    تم ارسال الرابط على الخاص  ")
+      message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
+              const Embed11 = new Discord.RichEmbed()
+        .setColor("RANDOM")
+                .setAuthor(message.guild.name, message.guild.iconURL)
+        .setDescription(`
+**
+
+-${message.guild.name}  Link
+**`)
+      message.author.sendEmbed(Embed11)
     }
 });
 
