@@ -31,27 +31,7 @@ client.on('message', msg => {
     msg.reply('وعليكم السلام ورحمة الله وبركاته');
   }
 });
-if (message.content === 'help') {
-              var embed  = new Discord.RichEmbed()
-                .addField("invite" ,"قريبا  ")
-                .addField("broadcast (bc)" ,"**الاستخدام:** ``-_broadcast <الرساله> , -_bc <الرساله>``")
-                .addField("**BAN**" ,"**الاستخدام:** ``-_طرد <المستخدم>``")
-                .addField("**KICK**" ,"**الاستخدام:** ``-_kick <المستخدم> ``")
-                .addField("**ِuser**" ,"**الاستخدام:** ``-_user``")
-                .addField("**setcolor**", "**الأستخدام :** ``-_color <اللون>``")
-                .addField("**bot**" ,"**الاستخدام:** ``-_bot ``")
-                .addField("**roms**" ,"**ال��ستخدام:** ``-_roms``")
-                .addField("**SERVER**" ,"**الاستخدام:** ``-_server``")
-                .addField("**contact**" ,"**الاستخدام:** ``-_contact <ارسال اقتراح لصاحب البوت>``")
-                .addField("**closeroms**" ,"**الاستخدام:** ``-_closeroms``")
-                .addField("**رابط**" ,"**الاستخدام:** ``انشاء رابط دعوة خاص فيك``  ")
-                .addField("**CLEAR**" ,"**الاستخدام:** ``-_حذف <العدد>``")
-                .addField("**openroms**", "**الأستخدام:** ``-_openroms``")
-                .setColor('RANDOM')
-.setColor('RANDOM')
-  message.author.sendEmbed(embed);
-    }
-});
+
 client.on('message', message => {
    if(!message.channel.guild) return;
 if(message.content.startsWith(prefix + 'bc')) {
