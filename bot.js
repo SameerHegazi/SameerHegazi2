@@ -645,5 +645,13 @@ message.channel.send(embed);
 }
     
 });
+client.on('message', message => {
+  if (true) {
+if (message.content === '-_invite') {
+      message.author.send('**تفضل اخي الرابط , يشرفنا دعوتك للبوت واستعماله**').catch(e => console.log(e.stack));
+	  message.author.send('').catch(e => console.log(e.stack));
+    }
+   }
+  });
 
 client.login(process.env.BOT_TOKEN);
