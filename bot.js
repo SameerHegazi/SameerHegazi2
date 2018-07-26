@@ -542,7 +542,7 @@ var mentionned = message.mentions.members.first();
        
     }
 })
-bot.on('message', msg =>{
+ client.on('message', message => {
   if(msg.channel.type !=="text") return;
 msg.content = msg.content.trim();
 msg.args = msg.content.split(' ').slice(1);
