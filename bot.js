@@ -31,7 +31,7 @@ client.on('message', msg => {
     msg.reply('وعليكم السلام ورحمة الله وبركاته');
   }
 });
-if (message.content === 'مساعدة') {
+if (message.content === 'help') {
               var embed  = new Discord.RichEmbed()
                 .addField("invite" ,"قريبا  ")
                 .addField("broadcast (bc)" ,"**الاستخدام:** ``-_broadcast <الرساله> , -_bc <الرساله>``")
