@@ -234,11 +234,15 @@ if (message.content.startsWith(prefix + 'help')) {
 ╚[❖══════════════════════❖]╝
 ╔[❖════════════════════════❖]╗
 | لإغلاق الرومات وجعلها للمشرفين |
-| ---    !.closeroms   ---- |
+| ---    -_closeroms   ---- |
 ╚[❖══════════════════════❖]╝
 ╔[❖══════════════════════❖]╗
 | لعمل برودكاست |
 | ---    -_bc   ---- |
+╚[❖══════════════════════❖]╝
+╔[❖══════════════════════❖]╗
+| فتح جميع الرومات |
+| ---    -_openroms   ---- |
 ╚[❖══════════════════════❖]╝
 **
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -379,6 +383,35 @@ client.on('message', message => {
   .addField("Reason:", `[ + ${reason} +  ]`)
   client.channels.get("471758319535783947").send({embed : banembed})
 }
+});
+client.on('message', message => {
+
+if (message.author.bot) return;
+    if (message.content === "-_closeroms") {
+                        if(!message.channel.guild) return message.reply(' عزيزي , هذه الأوامر فقط للسيرفرات ');
+
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**عزيزي , انت لست من المشرفين لتستعمل هذه الخاصية**');
+           message.channel.overwritePermissions(message.guild.id, {
+         SEND_MESSAGES: false
+
+           }).then(() => {
+               message.reply("**تم إقفال شات ✅ , ولا يمكن لأحد التحدث عدا المشرفين**")
+           });
+             }
+if (message.content === "-_openroms") {
+    if(!message.channel.guild) return message.reply('**عزيزي , هذه الأوامر فقط للسيرفرات**');
+
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('يجب ان تكون مسؤول الرسائل , او ان تكون مشرفاً');
+           message.channel.overwritePermissions(message.guild.id, {
+         SEND_MESSAGES: true
+
+           }).then(() => {
+               message.reply(" تم فتح الشات ✅, ويمكن للجميع التحدث الآن")
+           });
+             }
+
+
+
 });
 
 client.login(process.env.BOT_TOKEN);
