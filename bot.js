@@ -461,6 +461,7 @@ client.on('message', message =>{
     }
 });
 client.on('message', message => {
+var prefix = "-_"
 if(message.startsWith(prefix + "channel")){
   if(message.channel.permissionsFor(message.client.user).has('EMBED_LINKS') == false) return message.reply('sorry but I cannot send Embed Links for this channel... check my permissions and try again!');
   var kakchannel = args.slice(1).join(' ');
