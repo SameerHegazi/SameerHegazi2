@@ -375,12 +375,7 @@ client.channels.get("473778799092301825").sendEmbed(embed)
 .setColor('RANDOM')
         .setDescription(`**
 
-╭━━━╮╭━━╮╱╱╱╭╮
-┃╭━╮┃┃╭╮┃╱╱╭╯╰╮
-┃╰━━╮┃╰╯╰┳━┻╮╭╯
-╰━━╮┃┃╭━╮┃╭╮┃┃
-┃╰━╯┃┃╰━╯┃╰╯┃╰╮
-╰━━━╯╰━━━┻━━┻━╯
+
  General's Commands. :earth_asia:
 ${prefix}server - معلومات عن سيرفرك :scroll:
 ${prefix}id - الأيدي حقك :flashlight:
@@ -659,8 +654,8 @@ client.on('message',function(message) {
        if(!message.channel.guild) return;
        var mmmmEmbed = new Discord.RichEmbed()
        .setAuthor(client.user.username)
-       .setTitle(':eight_pointed_black_star: »  اضغط هنا.')
-       .setURL(`https://discordapp.com/oauth2/authorize/?permissions=268443710&scope=bot&client_id=465885551329804288`)
+       .setTitle(':eight_pointed_black_star: »  اضغط   هنا.')
+       .setURL(`discord.com`)
        .setFooter(`- Requested By: ${message.author.tag}`,message.author.avatarURL);
        message.channel.send(mmmmEmbed)
    }
