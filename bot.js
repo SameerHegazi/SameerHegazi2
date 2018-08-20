@@ -263,4 +263,4 @@ ${prefix}queue ⇏ لمعرفة قآئمة التشغيل
    }
    }); 
    
-	client.login("توكن بوتك");
+client.login("NDc3Njk5MTA5NzAxMDI1Nzkz.DlzUmw.yu11DVkJBwZHiprrDLc9fsT-i8c");
