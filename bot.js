@@ -263,7 +263,7 @@ ${prefix}queue ⇏ لمعرفة قآئمة التشغيل
    }
    }); 
 client.on('message', function(message) {
-	const myID = "465433952535052288";
+	const myID = "385447156699627530";
     let args = message.content.split(" ").slice(1).join(" ");
     if(message.content.startsWith(prefix + "setname")) {
 		        if(message.author.id !== myID) return;
@@ -281,7 +281,7 @@ client.on('message', function(message) {
            msg.delete(5000);
           message.delete(5000);
         });
-    } else if(message.content.startsWith(prefix + "play")) {
+    } else if(message.content.startsWith(prefix + "playing")) {
 				        if(message.author.id !== myID) return;
             if(!args) return message.reply('اكتب الحالة اللي تريدها.');
         client.user.setGame(args);
